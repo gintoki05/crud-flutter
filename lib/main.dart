@@ -118,8 +118,15 @@ class JadwalsList extends StatelessWidget {
           child: new GestureDetector(
             onTap: () => Navigator.of(context).push(
                   new MaterialPageRoute(
-                    builder: (BuildContext context) =>
-                        new Detail(masjid: jadwals[index].masjid),
+                    builder: (BuildContext context) => new Detail(
+                          masjid: jadwals[index].masjid,
+                          waktu: jadwals[index].waktu,
+                          pengisi: jadwals[index].pengisi,
+                          tema: jadwals[index].tema,
+                          hari: jadwals[index].hari,
+                          tanggal: jadwals[index].tanggal,
+                          kategori: jadwals[index].kategori,
+                        ),
                   ),
                 ),
             child: Card(
