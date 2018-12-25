@@ -48,9 +48,12 @@ class _DetailState extends State<Detail> {
                 color: Colors.red,
                 onPressed: () {
                   deleteData();
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => MyApp(),
-                  ));
+                  Navigator.pop(context);
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => MyApp()),
+                  );
                 },
               ),
               RaisedButton(
@@ -78,39 +81,102 @@ class _DetailState extends State<Detail> {
                   Padding(
                     padding: const EdgeInsets.only(top: 30.0),
                   ),
-                  Text(
-                    widget.masjid,
-                    style: TextStyle(fontSize: 20.0),
+                  Row(
+                    children: <Widget>[
+                      Text('Masjid :'),
+                      Expanded(
+                          child: Container(
+                        margin: EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 5.0),
+                        child: Text(
+                          widget.masjid,
+                          style: TextStyle(fontSize: 15.0),
+                        ),
+                      ))
+                    ],
                   ),
-                  Text(
-                    widget.id,
-                    style: TextStyle(fontSize: 18.0),
+                  Row(
+                    children: <Widget>[
+                      Text('Waktu :'),
+                      Expanded(
+                          child: Container(
+                        margin: EdgeInsets.fromLTRB(10.0, 8.0, 0.0, 5.0),
+                        child: Text(
+                          widget.waktu,
+                          style: TextStyle(fontSize: 15.0),
+                        ),
+                      ))
+                    ],
                   ),
-                  Text(
-                    widget.pengisi,
-                    style: TextStyle(fontSize: 18.0),
+                  Row(
+                    children: <Widget>[
+                      Text('Pengisi :'),
+                      Expanded(
+                          child: Container(
+                        margin: EdgeInsets.fromLTRB(10.0, 8.0, 0.0, 5.0),
+                        child: Text(
+                          widget.pengisi,
+                          style: TextStyle(fontSize: 15.0),
+                        ),
+                      ))
+                    ],
                   ),
-                  Text(
-                    widget.tema,
-                    style: TextStyle(fontSize: 18.0),
+                  Row(
+                    children: <Widget>[
+                      Text('Tema :'),
+                      Expanded(
+                          child: Container(
+                        margin: EdgeInsets.fromLTRB(10.0, 8.0, 0.0, 5.0),
+                        child: Text(
+                          widget.tema,
+                          style: TextStyle(fontSize: 15.0),
+                        ),
+                      ))
+                    ],
                   ),
-                  Text(
-                    widget.hari,
-                    style: TextStyle(fontSize: 18.0),
+                  Row(
+                    children: <Widget>[
+                      Text('Hari :'),
+                      Expanded(
+                          child: Container(
+                        margin: EdgeInsets.fromLTRB(10.0, 8.0, 0.0, 5.0),
+                        child: Text(
+                          widget.hari,
+                          style: TextStyle(fontSize: 15.0),
+                        ),
+                      ))
+                    ],
                   ),
-                  Text(
-                    widget.tanggal,
-                    style: TextStyle(fontSize: 18.0),
+                  Row(
+                    children: <Widget>[
+                      Text('Tanggal :'),
+                      Expanded(
+                          child: Container(
+                        margin: EdgeInsets.fromLTRB(10.0, 8.0, 0.0, 5.0),
+                        child: Text(
+                          widget.tanggal,
+                          style: TextStyle(fontSize: 15.0),
+                        ),
+                      ))
+                    ],
                   ),
-                  Text(
-                    widget.kategori,
-                    style: TextStyle(fontSize: 18.0),
+                  Row(
+                    children: <Widget>[
+                      Text('Kategori :'),
+                      Expanded(
+                          child: Container(
+                        margin: EdgeInsets.fromLTRB(10.0, 8.0, 0.0, 5.0),
+                        child: Text(
+                          widget.kategori,
+                          style: TextStyle(fontSize: 15.0),
+                        ),
+                      ))
+                    ],
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 30.0),
                   ),
                   Row(
-                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
                       RaisedButton(
                         child: Text(

@@ -143,8 +143,12 @@ class _MyFormState extends State<MyForm> {
                   onPressed: () {
                     if (_formKey.currentState.validate()) {
                       addData();
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (BuildContext context) => MyApp()));
+                      Navigator.pop(context);
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (BuildContext context) => MyApp()),
+                      );
                     }
                   },
                 )

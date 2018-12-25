@@ -134,7 +134,34 @@ class JadwalsList extends StatelessWidget {
                   ),
                 ),
             child: Card(
-              child: Text(jadwals[index].masjid),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.all(10.0),
+                    child: Text(
+                      "Jadwal: ${jadwals[index].masjid}",
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 10.0),
+                    child: Text("Hari: ${jadwals[index].hari}",
+                        style: TextStyle(fontWeight: FontWeight.bold)),
+                  ),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 10.0),
+                    child: Text("Tanggal: ${jadwals[index].tanggal}"),
+                  ),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 10.0),
+                    child: Text("Pengisi: ${jadwals[index].pengisi}"),
+                  ),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 10.0),
+                    child: Text("Waktu: ${jadwals[index].waktu}"),
+                  ),
+                ],
+              ),
             ),
           ),
         );

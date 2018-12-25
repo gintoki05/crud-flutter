@@ -162,8 +162,12 @@ class _EditDataState extends State<EditData> {
                     onPressed: () {
                       if (_formKey.currentState.validate()) {
                         editData();
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (BuildContext context) => MyApp()));
+                        Navigator.pop(context);
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => MyApp()),
+                        );
                       }
                     },
                   )
