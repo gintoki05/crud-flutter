@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import './main.dart';
+
 class AddData extends StatefulWidget {
   @override
   _AddDataState createState() => _AddDataState();
@@ -141,11 +143,8 @@ class _MyFormState extends State<MyForm> {
                   onPressed: () {
                     if (_formKey.currentState.validate()) {
                       addData();
-                      Scaffold.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('Proses Data'),
-                        ),
-                      );
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (BuildContext context) => MyApp()));
                     }
                   },
                 )

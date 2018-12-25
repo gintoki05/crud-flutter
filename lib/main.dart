@@ -24,6 +24,7 @@ List<Jadwal> parseJadwals(String responseBody) {
 }
 
 class Jadwal {
+  final String id;
   final String masjid;
   final String waktu;
   final String pengisi;
@@ -33,7 +34,8 @@ class Jadwal {
   final String kategori;
 
   Jadwal(
-      {this.masjid,
+      {this.id,
+      this.masjid,
       this.waktu,
       this.pengisi,
       this.tema,
@@ -43,6 +45,7 @@ class Jadwal {
 
   factory Jadwal.fromJson(Map<String, dynamic> json) {
     return Jadwal(
+      id: json['id'] as String,
       masjid: json['masjid'] as String,
       waktu: json['waktu'] as String,
       pengisi: json['pengisi'] as String,
@@ -119,6 +122,7 @@ class JadwalsList extends StatelessWidget {
             onTap: () => Navigator.of(context).push(
                   new MaterialPageRoute(
                     builder: (BuildContext context) => new Detail(
+                          id: jadwals[index].id,
                           masjid: jadwals[index].masjid,
                           waktu: jadwals[index].waktu,
                           pengisi: jadwals[index].pengisi,

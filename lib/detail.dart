@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
+import './main.dart';
 import './edit.dart';
 
-class Detail extends StatelessWidget {
+class Detail extends StatefulWidget {
+  final String id;
   final String masjid;
   final String waktu;
   final String pengisi;
@@ -12,19 +15,59 @@ class Detail extends StatelessWidget {
   final String kategori;
 
   Detail(
-      {this.masjid,
+      {this.id,
+      this.masjid,
       this.waktu,
       this.pengisi,
       this.tema,
       this.hari,
       this.tanggal,
       this.kategori});
+  @override
+  _DetailState createState() => _DetailState();
+}
+
+class _DetailState extends State<Detail> {
+  void deleteData() {
+    var url = "http://palembangmengaji.forkismapalembang.com/deleteData.php";
+    http.post(url, body: {'id': widget.id});
+  }
+
+  void confirm() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            content: Text("Yakin ingin menghapus '${widget.masjid}'?"),
+            actions: <Widget>[
+              RaisedButton(
+                child: Text(
+                  "OK Hapus!",
+                  style: TextStyle(color: Colors.white),
+                ),
+                color: Colors.red,
+                onPressed: () {
+                  deleteData();
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => MyApp(),
+                  ));
+                },
+              ),
+              RaisedButton(
+                child: Text("Cancel", style: TextStyle(color: Colors.white)),
+                color: Colors.green,
+                onPressed: () => Navigator.pop(context),
+              ),
+            ],
+          );
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(masjid),
+        title: Text(widget.masjid),
       ),
       body: ListView(
         children: <Widget>[
@@ -36,31 +79,31 @@ class Detail extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 30.0),
                   ),
                   Text(
-                    masjid,
+                    widget.masjid,
                     style: TextStyle(fontSize: 20.0),
                   ),
                   Text(
-                    waktu,
+                    widget.id,
                     style: TextStyle(fontSize: 18.0),
                   ),
                   Text(
-                    pengisi,
+                    widget.pengisi,
                     style: TextStyle(fontSize: 18.0),
                   ),
                   Text(
-                    tema,
+                    widget.tema,
                     style: TextStyle(fontSize: 18.0),
                   ),
                   Text(
-                    hari,
+                    widget.hari,
                     style: TextStyle(fontSize: 18.0),
                   ),
                   Text(
-                    tanggal,
+                    widget.tanggal,
                     style: TextStyle(fontSize: 18.0),
                   ),
                   Text(
-                    kategori,
+                    widget.kategori,
                     style: TextStyle(fontSize: 18.0),
                   ),
                   Padding(
@@ -78,13 +121,14 @@ class Detail extends StatelessWidget {
                         onPressed: () =>
                             Navigator.of(context).push(MaterialPageRoute(
                               builder: (BuildContext context) => EditData(
-                                    masjid: masjid,
-                                    waktu: waktu,
-                                    pengisi: pengisi,
-                                    tema: tema,
-                                    hari: hari,
-                                    tanggal: tanggal,
-                                    kategori: kategori,
+                                    id: widget.id,
+                                    masjid: widget.masjid,
+                                    waktu: widget.waktu,
+                                    pengisi: widget.pengisi,
+                                    tema: widget.tema,
+                                    hari: widget.hari,
+                                    tanggal: widget.tanggal,
+                                    kategori: widget.kategori,
                                   ),
                             )),
                       ),
@@ -94,7 +138,7 @@ class Detail extends StatelessWidget {
                           style: TextStyle(color: Colors.white),
                         ),
                         color: Colors.red,
-                        onPressed: () {},
+                        onPressed: () => confirm(),
                       ),
                     ],
                   )
